@@ -7,15 +7,10 @@ function App() {
   const [shortURL, setShortURL] = useState("");
   const [longURL, setLongURL] = useState("");
   
-  async function shortenURL(shorten, alias){
-    const options = {
-      url: 'http://cutt.ly/api/api.php',
-      params: {key: process.env.CUTTLY_API_KEY, short: shorten, name: alias}
-    };
-  
+  async function shortenURL(shorten, alias){  
     let data = "";
   
-    data = await axios.get(options).then(function (response) {
+    data = await axios.get('https://cutt.ly/api/api.php', {params: {key: process.env.CUTTLY_API_KEY, short: shorten, name: alias}}).then(function (response) {
       console.log(response.data)
       return response.data.shortLink;
     }).catch(function (error) {
