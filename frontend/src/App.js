@@ -27,11 +27,12 @@ function App() {
   
   function handleSearch(e) {
     if (!e.key || e.key === "Enter") {
-      setShortURL(shortenURL(longURL))
+      setShortURL(shortenURL(longURL, "cutt.ly/amerjusupovic"))
     }
   }
   
   function handleSearchInput(e) {
+    console.log(e.target.value)
     setLongURL(e.target.value)
   }
 
