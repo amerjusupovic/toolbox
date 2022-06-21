@@ -16,7 +16,7 @@ function App() {
     let data = {};
   
     data = await axios.get(options).then(function (response) {
-      console.log(response.data.shortLink);
+      return response.data.shortLink;
     }).catch(function (error) {
       console.error(error);
     });
