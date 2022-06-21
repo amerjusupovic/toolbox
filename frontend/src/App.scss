@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@200&display=swap');
 
+.main {
+  height: 100%;
+  display: grid;
+  color: white;
+}
+
+#root {
+  height: 100%;
+}
+
 .search-bar {
   grid-area: 1 / 1;
   justify-content: center;

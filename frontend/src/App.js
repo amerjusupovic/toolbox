@@ -13,9 +13,10 @@ function App() {
       params: {key: process.env.CUTTLY_API_KEY, short: shorten, name: alias}
     };
   
-    let data = {};
+    let data = "";
   
     data = await axios.get(options).then(function (response) {
+      console.log(response.data)
       return response.data.shortLink;
     }).catch(function (error) {
       console.error(error);
