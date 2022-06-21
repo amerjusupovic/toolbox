@@ -10,7 +10,7 @@ function App() {
   async function shortenURL(shorten, alias){  
     let data = "";
   
-    data = await axios.get('https://cutt.ly/api/api.php', {params: {key: process.env.CUTTLY_API_KEY, short: shorten, name: alias}}).then(function (response) {
+    data = await axios.get('http://cutt.ly/api/api.php', {params: {key: process.env.CUTTLY_API_KEY, short: shorten, name: alias}}).then(function (response) {
       console.log(response.data)
       return response.data.shortLink;
     }).catch(function (error) {
