@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab:wght@200&display=swap');
+
+.search-bar {
+  grid-area: 1 / 1;
+  justify-content: center;
+  align-items: center;
+  display: inline-grid;
+  z-index: 1;
+  position: absolute;
+  margin-top: 65vh;
+  margin-left: 22.5vw;
+}
+
+.search-input {
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.815);
+}
+
+.search-home-scale {
+  width: 55vw;
+  height: 10vh;
+}
+
+.search-home-scale .ant-input {
+  height: 10vh;
+}
+
+.search-input input {
+  width: 85%;
+  border-radius: 15px;
+}
+
+.search-input .ant-input {
+  font-size: 3vh;
+  align-items: stretch;
+  padding-left: 4vh;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.search-input button {
+  width: 100%;
+}
+
+.search-home-scale .ant-btn {
+  height: 10vh;
+}
+
+.search-home-scale .ant-input {
+  height: 10vh;
+}
+
+.search-home-scale .ant-input-group-addon {
+  width: calc(max(5vw, 10vh));
+}
+
+.search-input .ant-input-group-addon {
+  border-radius: 15px !important;
+}
+
+.search-input svg{
+  font-size: 20px;
+}
+
+.search-input .ant-input-search-button {
+  border-radius: 0px 15px 15px 0px !important;
+  border-color: white;
+}
