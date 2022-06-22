@@ -12,10 +12,10 @@ app.use((req, res, next) => {
 
 app.get('/shorten', (req, res) => {
   console.log(req)
-  res = await axios.get('https://cutt.ly/api/api.php', {params: {key: process.env.CUTTLY_API_KEY, short: "bestdex.vercel.app", name: "cutt.ly/amerjusupovic"}, 
+  axios.get('https://cutt.ly/api/api.php', {params: {key: process.env.CUTTLY_API_KEY, short: "bestdex.vercel.app", name: "cutt.ly/amerjusupovic"}, 
   headers: {"Access-Control-Allow-Origin": "*"}}).then(function (response) {
     console.log(response.data)
-    return response.data.shortLink;
+    return response.data;
   }).catch(function (error) {
     console.error(error);
   });
