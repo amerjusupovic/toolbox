@@ -4,6 +4,7 @@ import { useState } from 'react';
 const axios = require("axios");
 const express = require('express');
 const app = express();
+const request = require('request');
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -12,6 +13,18 @@ app.use((req, res, next) => {
 
 app.get('/shorten', (req, res) => {
   console.log(req)
+  request(
+    { url: 'https://cutt.ly/api/api.php', qs: {key: req.query.CUTTLY_API_KEY, short: req.query.short} },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: error.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+
+  
   axios.get('https://cutt.ly/api/api.php', {params: {key: process.env.CUTTLY_API_KEY, short: "bestdex.vercel.app", name: "cutt.ly/amerjusupovic"}, 
   headers: {"Access-Control-Allow-Origin": "*"}}).then(function (response) {
     console.log(response.data)
@@ -28,10 +41,10 @@ function App() {
   const [shortURL, setShortURL] = useState("");
   const [longURL, setLongURL] = useState("");
   
-  async function shortenURL(shorten, alias){  
+  async function shortenURL(shorten){  
     let data = "";
   
-    data = await axios.get('/shorten', {params: {key: process.env.CUTTLY_API_KEY, short: shorten, name: alias}}).then(function (response) {
+    data = await axios.get('/shorten', {params: {key: process.env.CUTTLY_API_KEY, short: shorten}}).then(function (response) {
       console.log(response.data)
       return response.data.shortLink;
     }).catch(function (error) {
@@ -43,7 +56,7 @@ function App() {
   
   function handleSearch(e) {
     if (!e.key || e.key === "Enter") {
-      setShortURL(shortenURL(longURL, "cutt.ly/amerjusupovic"))
+      setShortURL(shortenURL(longURL))
     }
   }
   
