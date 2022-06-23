@@ -45,7 +45,7 @@ function App() {
           <Button variant="outlined" className="search-button"><SearchIcon/></Button>
         </div>
         <SwapSpinner color="#ffffff" loading={loading}/>
-        <div className={loading ? "link-container" : "link-appear"}>Your link is ready!: {(shortURL !== "") && <a href={shortURL}>{shortURL}</a>}</div>
+        <div className={loading || shortURL === "" ? "link-container" : "link-appear"}>Your link is ready!: {(shortURL !== "") && <a href={shortURL}>{shortURL}</a>}</div>
       </div>
     </div>
   );
