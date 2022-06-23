@@ -14,7 +14,7 @@ function App() {
     if (!shorten.includes("https://") && !shorten.includes("http://")) {
       shorten = "https://" + shorten
     }
-    axios("http://localhost:9000/shorten", {params: {key: process.env.CUTTLY_API_KEY, short: shorten}})
+    axios("/shorten", {params: {key: process.env.REACT_APP_CUTTLY_API_KEY, short: shorten}})
       .then(res => setShortURL(JSON.parse(res.data.body).url.shortLink))
       .then(res => console.log(shortURL))
   }
