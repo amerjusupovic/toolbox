@@ -11,68 +11,84 @@
   height: 100%;
 }
 
+html {
+  min-height: 100%;
+  background-color:rgb(232, 240, 255);
+}
+
 .search-bar {
-  grid-area: 1 / 1;
   justify-content: center;
   align-items: center;
   display: inline-grid;
-  z-index: 1;
-  position: absolute;
-  margin-top: 65vh;
-  margin-left: 22.5vw;
+  margin-top: 40vh;
 }
 
 .search-input {
-  border-radius: 15px;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.815);
-}
-
-.search-home-scale {
   width: 55vw;
-  height: 10vh;
+  height: 8vh;
 }
 
-.search-home-scale .ant-input {
-  height: 10vh;
+.search-input .MuiOutlinedInput-input {
+  height: 8vh;
 }
 
-.search-input input {
-  width: 85%;
-  border-radius: 15px;
+.search-input .MuiOutlinedInput-root {
+  height: 8vh;
+  font-size: calc(max(3vh, 1.25rem));
+  border-radius: 10px 0 0 10px;
+  background-color: white;
 }
 
-.search-input .ant-input {
-  font-size: 3vh;
-  align-items: stretch;
-  padding-left: 4vh;
-  font-family: 'Bebas Neue', cursive;
+.search-button {
+  height: 8vh;
+  width: 5vw;
+  border-radius: 0 10px 10px 0 !important;
+  background-color: white !important;
 }
 
-.search-input button {
-  width: 10%;
+.link-container {
+  margin-top: 5vh;
+  color: rgb(85, 85, 85);
+  font-size: calc(max(3vh, 1.25rem));
+  text-align: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  opacity: 0;
 }
 
-.search-home-scale .ant-btn {
-  height: 10vh;
+.link-appear {
+  animation: animate 2s;
+  margin-top: 5vh;
+  color: rgb(85, 85, 85);
+  font-size: calc(max(3vh, 1.25rem));
+  text-align: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
-.search-home-scale .ant-input {
-  height: 10vh;
+.header-title {
+  color: rgb(85, 85, 85);
+  font-size: calc(max(3vh, 1.25rem));
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  margin: 1rem 0 1rem 1rem;
 }
 
-.search-home-scale .ant-input-group-addon {
-  width: calc(max(5vw, 10vh));
+.header-bar {
+  background-color: rgb(252, 251, 251) !important;
 }
 
-.search-input .ant-input-group-addon {
-  border-radius: 15px !important;
+@keyframes animate {
+  0%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 1;
+  }
 }
 
-.search-input svg{
-  font-size: 20px;
-}
-
-.search-input .ant-input-search-button {
-  border-radius: 0px 15px 15px 0px !important;
-  border-color: white;
+@-webkit-keyframes animate {
+  0%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 1;
+  }
 }

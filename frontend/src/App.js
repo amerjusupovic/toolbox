@@ -1,6 +1,9 @@
 import './App.scss';
-import { Input } from 'antd';
 import { useState } from 'react';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SearchIcon from '@mui/icons-material/Search';
+import AppBar from "@mui/material/AppBar";
 const axios = require("axios");
 
 function App() {
@@ -11,8 +14,7 @@ function App() {
     if (!shorten.includes("https://") && !shorten.includes("http://")) {
       shorten = "https://" + shorten
     }
-    axios("http://localhost:9000/shorten", {params: {key: "7b44a008471660c11ea2036b2d40b75caf2fd", short: shorten}})
-      //.then(res => console.log(JSON.parse(res.data.body).url.shortLink))
+    axios("http://localhost:9000/shorten", {params: {key: process.env.CUTTLY_API_KEY, short: shorten}})
       .then(res => setShortURL(JSON.parse(res.data.body).url.shortLink))
       .then(res => console.log(shortURL))
   }
@@ -30,9 +32,15 @@ function App() {
 
   return (
     <div className="main">
+      <AppBar className="header-bar">
+        <div className="header-title">url</div>
+      </AppBar>
       <div className="search-bar">
-        <Input.Search className="search-input search-home-scale" placeholder="Enter a URL" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/>
-        <div>{(shortURL !== "") && shortURL}</div>
+        <div>
+          <TextField variant="outlined" className="search-input" placeholder="Enter a URL" onChange={handleSearchInput} onKeyDown={handleSearch} onSearch={handleSearch}/>
+          <Button variant="outlined" className="search-button"><SearchIcon/></Button>
+        </div>
+        <div className={shortURL === "" ? "link-container" : "link-appear"}>Your link is ready!: {(shortURL !== "") && <a href={shortURL}>{shortURL}</a>}</div>
       </div>
     </div>
   );
